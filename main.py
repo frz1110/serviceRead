@@ -4,7 +4,7 @@ from typing import List
 import databases
 import sqlalchemy
 
-DATABASE_URL = "postgresql://vpdkizvonqmbbh:28afd484c151b423fc65e29fa2f2511d35bf8057b248b176666783d95227acf0@ec2-54-227-248-71.compute-1.amazonaws.com:5432/d24q63i1f77asb"
+DATABASE_URL = "sqlite:///../store.db"
 
 database = databases.Database(DATABASE_URL)
 
@@ -19,7 +19,7 @@ mahasiswa = sqlalchemy.Table(
 
 
 engine = sqlalchemy.create_engine(
-    DATABASE_URL
+    DATABASE_URL, connect_args={"check_same_thread": False}
 )
 metadata.create_all(engine)
 
