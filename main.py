@@ -39,7 +39,7 @@ async def shutdown():
 def read_root():
     return {"message": "Welcome"}
 
-@app.get("/read/{npm}")
+@app.get("/{npm}")
 async def read_npm(npm: str):
     query = mahasiswa.select().where(mahasiswa.c.npm == npm)
     result = await database.fetch_one(query)
